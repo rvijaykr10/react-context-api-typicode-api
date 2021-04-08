@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Post from "./components/Post";
 
-function App() {
+import PostState from "./context/post/PostState";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PostState>
+      <Router>
+        <Fragment>
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Post} />
+            </Switch>
+          </div>
+        </Fragment>
+      </Router>
+    </PostState>
   );
-}
+};
 
 export default App;
